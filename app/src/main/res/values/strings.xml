@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">IPv6 Experiment</string>
+    <string name="app_description">Thank you for joining us in this experiment.
+        You can close this activity and keep using your device normally. We are collecting when
+        your screen is turned ON and OFF, nothing else. If you want to checkout how this app is
+        doing such task, please do not hesitate to review the implementation at our Git repository.
+    </string>
+    <string name="channel_id">IPv6ExperimentService</string>
+    <string name="notification">The app is running</string>
+</resources>
