@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name='mobileTracker'
+rootProject.name='mob6experiment'

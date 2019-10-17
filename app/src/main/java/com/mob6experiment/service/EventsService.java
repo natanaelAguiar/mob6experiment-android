@@ -18,11 +18,11 @@ import androidx.core.app.NotificationCompat;
 import com.mob6experiment.App;
 import com.mob6experiment.R;
 import com.mob6experiment.event.EventDispatcher;
-import com.mob6experiment.receiver.EventsSenderReceiver;
+import com.mob6experiment.receiver.EventsReceiver;
 
-public class EventsSenderService extends Service {
+public class EventsService extends Service {
 
-    private EventsSenderReceiver eventsReceiver;
+    private EventsReceiver eventsReceiver;
     private EventDispatcher eventDispatcher;
 
     @Nullable
@@ -43,12 +43,12 @@ public class EventsSenderService extends Service {
 
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.setPriority(100);
-        for (String intentToTrack : App.INTENTS_TO_TRACK) {
+        for (String intentToTrack : EventsReceiver.getActionsToListen()) {
             intentFilter.addAction(intentToTrack);
         }
 
         eventDispatcher = new EventDispatcher(this);
-        eventsReceiver = new EventsSenderReceiver(eventDispatcher);
+        eventsReceiver = new EventsReceiver(eventDispatcher);
 
         registerReceiver(eventsReceiver, intentFilter);
         Log.d(App.TAG, "The receiver has been registered");
@@ -77,7 +77,7 @@ public class EventsSenderService extends Service {
                     .setContentTitle(getString(R.string.app_name))
                     .setContentText(getString(R.string.notification))
                     .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                    .setSmallIcon(R.drawable.ic_launcher_foreground)
+                    .setSmallIcon(R.drawable.icon)
                     .build();
         }
 
